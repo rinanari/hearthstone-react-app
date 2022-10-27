@@ -1,3 +1,4 @@
+import { CardsInfo } from "../components/CardsInfo";
 export const MainPage = () => {
   return (
     <div>
@@ -9,7 +10,9 @@ export const MainPage = () => {
             Hearthstone cards.
           </p>
         </div>
-        <div className="container">{/* <CardsInfo /> */}</div>
+        <div className="container">
+          <CardsInfo />
+        </div>
       </main>
     </div>
   );
