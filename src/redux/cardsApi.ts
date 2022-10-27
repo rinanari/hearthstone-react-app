@@ -4,7 +4,7 @@ import { Card } from "../models/models";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "1a3f815ffamsh6ec015425362b7bp141b9ajsnb3c80a13ff3c",
+    "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
     "X-RapidAPI-Host": "omgvamp-hearthstone-v1.p.rapidapi.com",
   },
 };
