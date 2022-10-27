@@ -1,1 +1,24 @@
-
+.button {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 18px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  text-shadow: 0 1px 0 #312c2c;
+  border-radius: 50px;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #5a70d4,
+    #834fb9,
+    #5a80d2,
+    #892ad8
+  );
+  box-shadow: 0 4px 15px 0 rgba(136, 92, 197, 0.75);
+}
