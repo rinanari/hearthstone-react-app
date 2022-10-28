@@ -10,7 +10,7 @@ export const MainPage = () => {
             Hearthstone cards.
           </p>
         </div>
-        <div className="container">
+        <div>
           <CardsInfo />
         </div>
       </main>
