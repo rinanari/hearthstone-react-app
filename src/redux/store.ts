@@ -4,11 +4,13 @@ import {
   Action,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
+import userReducer from "./slices/userSlice";
 import { cardsApi } from "./cardsApi";
 
 export const store = configureStore({
   reducer: {
     [cardsApi.reducerPath]: cardsApi.reducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(cardsApi.middleware),

@@ -1,4 +1,6 @@
-export interface ServerResponse {
+import React from "react";
+
+export interface CardResponse {
   cards: Card[];
 }
 export interface Mechanic {
@@ -27,4 +29,8 @@ export interface Card {
   elite?: boolean;
   imgGold: string;
   mechanics: Mechanic[];
+}
+export interface FormPropsType {
+  title: string;
+  handleClick: (email: string, password: string) => void;
 }

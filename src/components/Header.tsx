@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import s from "../components/Header.module.scss";
 
@@ -10,14 +11,14 @@ export const Header = () => {
         </div>
         <div className={s.sign_buttons}>
           <div className="button">
-            <a className={s.sign_in} href="#">
+            <Link to={"/signin"} className={s.sign_in}>
               Sign in
-            </a>
+            </Link>
           </div>
           <div className="button">
-            <a className={s.sign_up} href="#">
+            <Link to={"/signup"} className={s.sign_up}>
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </div>
