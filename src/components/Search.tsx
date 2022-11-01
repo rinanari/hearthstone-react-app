@@ -1,8 +1,9 @@
 import s from "../components/Search.module.scss";
+
 export const Search = ({ setSearch, search }: any) => {
   return (
     <div>
-      <form action="">
+      <form>
         <input
           className={s.input}
           type="text"
