@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from "../components/Form";
 import { setUser } from "../redux/slices/userSlice";
+import { setAuth } from "../redux/slices/authSlice";
 
 export const SignIn = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const SignIn = () => {
             id: user.user.tenantId,
           })
         );
+        dispatch(setAuth(true));
         navigate("/");
       })
       .catch(console.error);

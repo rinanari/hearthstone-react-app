@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Form } from "../components/Form";
-
+import { setAuth } from "../redux/slices/authSlice";
 import { setUser } from "../redux/slices/userSlice";
 
 export const SignUp = () => {
@@ -20,6 +20,7 @@ export const SignUp = () => {
             id: user.user.tenantId,
           })
         );
+        dispatch(setAuth(true));
         navigate("/");
       })
       .catch(console.error);
