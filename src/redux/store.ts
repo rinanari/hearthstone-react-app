@@ -17,7 +17,7 @@ export const store = configureStore({
   },
   preloadedState: reHydrateStore(),
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(cardsApi.middleware).concat(authMiddleware),
+    getDefaultMiddleware().concat(cardsApi.middleware, authMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
