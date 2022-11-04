@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface authState {
+interface AuthState {
   isAuth: boolean;
 }
 const initialState: authState = {
