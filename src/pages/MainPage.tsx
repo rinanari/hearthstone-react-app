@@ -1,4 +1,5 @@
 import { CardsInfo } from "../components/CardsInfo";
+
 export const MainPage = () => {
   return (
     <div>

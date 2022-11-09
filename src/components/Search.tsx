@@ -1,4 +1,5 @@
 import s from "../components/Search.module.scss";
+
 export const Search = ({ setSearch, search }: any) => {
   return (
     <div>
