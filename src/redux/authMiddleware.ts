@@ -1,10 +1,6 @@
-// export const authMiddleware = ({getState}: any) => (next: any) => (action: any) => {
-//   localStorage.setItem('applicationState',  JSON.stringify(getState()))
-//   return next(action);
-// };
-
-export const authMiddleware = ({ getState }: any) => {
-  return (next: any) => (action: any) => {
+import { Middleware } from "@reduxjs/toolkit";
+export const authMiddleware: Middleware = ({ getState }) => {
+  return (next) => (action) => {
     const result = next(action);
     localStorage.setItem("applicationState", JSON.stringify(getState()));
     return result;

@@ -5,7 +5,7 @@ import s from "../components/Header.module.scss";
 import { SignOutButton } from "./SignOutButton";
 
 export const Header = () => {
-  const { ifAuth } = useAuth();
+  const { isAuth } = useAuth();
 
   return (
     <div>
@@ -13,13 +13,13 @@ export const Header = () => {
         <Link to="/" className={s.logo}>
           <img src={logo} width="70" alt="Logo" />
         </Link>
-        {ifAuth && (
+        {isAuth && (
           <nav>
             <Link to="/favourites">Favourite cards</Link>
             <Link to="/history">Search history</Link>
           </nav>
         )}
-        {ifAuth ? (
+        {isAuth ? (
           <SignOutButton />
         ) : (
           <div className={s.sign_buttons}>

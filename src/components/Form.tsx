@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { FormPropsType } from "../models/models";
+
+interface FormPropsType {
+  title: string;
+  handleClick: (email: string, password: string) => void;
+}
 
 export const Form = ({ title, handleClick }: FormPropsType) => {
   const [email, setEmail] = useState("");

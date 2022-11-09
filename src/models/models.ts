@@ -30,7 +30,3 @@ export interface Card {
   imgGold: string;
   mechanics: Mechanic[];
 }
-export interface FormPropsType {
-  title: string;
-  handleClick: (email: string, password: string) => void;
-}
