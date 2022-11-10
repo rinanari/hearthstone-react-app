@@ -3,21 +3,43 @@ import {
   ThunkAction,
   Action,
   getDefaultMiddleware,
+  combineReducers,
 } from "@reduxjs/toolkit";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REGISTER,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import userReducer from "./slices/userSlice";
 import { cardsApi } from "./cardsApi";
 import authReducer from "./slices/authSlice";
-import { authMiddleware, reHydrateStore } from "./authMiddleware";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+const reducers = combineReducers({
+  [cardsApi.reducerPath]: cardsApi.reducer,
+  user: userReducer,
+  auth: authReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: {
-    [cardsApi.reducerPath]: cardsApi.reducer,
-    user: userReducer,
-    auth: authReducer,
-  },
-  preloadedState: reHydrateStore(),
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(cardsApi.middleware, authMiddleware),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REGISTER, REHYDRATE, PAUSE, PERSIST, PURGE],
+      },
+    }).concat(cardsApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
