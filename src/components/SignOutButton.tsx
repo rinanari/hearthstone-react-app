@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setAuth } from "../redux/slices/authSlice";
+import { removeAuth } from "../redux/slices/authSlice";
 import { signUserOut } from "../redux/slices/userSlice";
 
 export const SignOutButton = () => {
@@ -7,7 +7,7 @@ export const SignOutButton = () => {
 
   function handleSignOut() {
     dispatch(signUserOut());
-    dispatch(setAuth(false));
+    dispatch(removeAuth());
   }
 
   return (

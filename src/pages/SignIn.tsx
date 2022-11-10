@@ -21,7 +21,7 @@ export const SignIn = () => {
             id: user.user.tenantId,
           })
         );
-        dispatch(setAuth(true));
+        dispatch(setAuth());
         navigate("/");
       })
       .catch(console.error);
