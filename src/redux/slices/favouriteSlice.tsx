@@ -3,9 +3,11 @@ import { Card } from "../../models/models";
 
 interface FavState {
   favourites: Card[];
+  isFavourite: boolean;
 }
 const initialState: FavState = {
   favourites: [],
+  isFavourite: false,
 };
 
 const favSlice = createSlice({
@@ -16,7 +18,9 @@ const favSlice = createSlice({
       state.favourites.push(action.payload);
     },
     removeFavourite(state, action: PayloadAction<Card>) {
-      state.favourites = state.favourites.filter((f) => f !== action.payload);
+      state.favourites = state.favourites.filter(
+        (f) => f.cardId !== action.payload.cardId
+      );
     },
   },
 });

@@ -1,4 +1,4 @@
-import { Header } from "../components/Header";
+import { CardsInfo } from "../components/CardsInfo";
 import { useAppSelector } from "../redux/hooks";
 
 export const FavouritesPage = () => {
@@ -14,14 +14,7 @@ export const FavouritesPage = () => {
     <div>
       <h1>Here you an find cards you marked as favourites</h1>
       <ul>
-        {favourites.map((fav) => (
-          <li key={fav.cardId}>
-            <div>
-              <img src={fav.img} alt="" />
-              {fav.name}
-            </div>
-          </li>
-        ))}
+        <CardsInfo data={favourites} />
       </ul>
     </div>
   );
