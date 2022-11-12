@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
-import { useDebounce } from "../hooks/debounce";
-import { useSearchCardsQuery } from "../redux/cardsApi";
 import { CardItem } from "./CardItem";
-import { Search } from "./Search";
+import { Card } from "../models/models";
 import s from "../components/CardsInfo.module.scss";
-
-export const CardsInfo = () => {
-  const [search, setSearch] = useState("");
-  const debounced = useDebounce(search);
-  const { data } = useSearchCardsQuery(debounced, {
-    skip: debounced.length < 3,
-  });
-  useEffect(() => {
-    console.log(debounced);
-  }, [debounced]);
+interface Props {
+  data: Card[] | undefined;
+}
+export const CardsInfo = ({ data }: Props) => {
   return (
     <>
       <div className="wrapper">
-        <Search setSearch={setSearch} value={search} />
-      </div>
-      <div className="wrapper">
         <div className={s.cards_container}>
           {data?.map((card) => (
-            <CardItem key={card.cardId} {...card} />
+            <CardItem key={card.cardId} card={card} />
           ))}
         </div>
       </div>

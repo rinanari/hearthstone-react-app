@@ -6,6 +6,7 @@ import { SignUp } from "./pages/SignUp";
 import { FavouritesPage } from "./pages/FavouritesPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import "./App.scss";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/favourites" element={<FavouritesPage />}></Route>
-        <Route path="/history" element={<HistoryPage />}></Route>
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/favourites" element={<FavouritesPage />}></Route>
+          <Route path="/history" element={<HistoryPage />}></Route>
+        </Route>
       </Routes>
     </div>
   );

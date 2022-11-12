@@ -22,6 +22,9 @@ export const cardsApi = createApi({
         method,
         headers,
       }),
+      transformResponse(response: Card[]) {
+        return response.filter((card: Card) => card.img);
+      },
     }),
   }),
 });

@@ -32,7 +32,7 @@ export const SignIn = () => {
       <h1>Sign in</h1>
       <Form title="Sign in" handleClick={handleSignIn} />
       <p>
-        Not yet registered? <Link to={"/signup"} />
+        Not yet registered? <Link to={"/signup"}>Register</Link>
       </p>
     </div>
   );
