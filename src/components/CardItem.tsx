@@ -7,7 +7,7 @@ import { useState } from "react";
 import blankStar from "../assets/images/blank-star.png";
 import paintedStar from "../assets/images/painted-star.png";
 import { useAuth } from "../hooks/useAuth";
-
+import { Link } from "react-router-dom";
 type Props = { key: string; card: Card };
 
 export const CardItem = (props: Props) => {
@@ -29,8 +29,10 @@ export const CardItem = (props: Props) => {
 
   return (
     <div className={s.card}>
-      <img className={s.card_img} src={props.card.img} alt="Карточка" />
-      <h4>{props.card.name}</h4>
+      <Link to={`/${props.card.cardId}`}>
+        <img className={s.card_img} src={props.card.img} alt="Карточка" />
+        <h4>{props.card.name}</h4>
+      </Link>
       <p>{props.card.type}</p>
       <p>{props.card.text}</p>
       {isAuth &&

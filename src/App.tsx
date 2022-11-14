@@ -7,6 +7,7 @@ import { FavouritesPage } from "./pages/FavouritesPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import "./App.scss";
 import { ProtectedRoutes } from "./ProtectedRoutes";
+import { SingleCardPage } from "./pages/SingleCardPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/:cardId" element={<SingleCardPage />}></Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route element={<ProtectedRoutes />}>

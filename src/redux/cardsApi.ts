@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Card } from "../models/models";
+import { Card, SingleCard } from "../models/models";
 
 const options = {
   method: "GET",
@@ -26,7 +26,14 @@ export const cardsApi = createApi({
         return response.filter((card: Card) => card.img);
       },
     }),
+    getSingleCard: build.query<SingleCard[], string | undefined>({
+      query: (id: string) => ({
+        url: `cards/${id}`,
+        method,
+        headers,
+      }),
+    }),
   }),
 });
 
-export const { useSearchCardsQuery } = cardsApi;
+export const { useSearchCardsQuery, useGetSingleCardQuery } = cardsApi;
