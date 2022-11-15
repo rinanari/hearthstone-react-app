@@ -1,6 +1,8 @@
-import { Suspense, lazy } from "react";
+import { useContext, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { ThemeContext } from "../ThemeProvider";
+
 import logo from "../assets/images/logo.png";
 import s from "../components/Header.module.scss";
 
@@ -17,10 +19,15 @@ const SignOutButton = lazy(() =>
 
 export const Header = () => {
   const { isAuth } = useAuth();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div>
-      <div className={s.header_container}>
+      <div
+        className={
+          theme === "Light" ? s.header_container : s.header_container_dark
+        }
+      >
         <Link to="/" className={s.logo}>
           <img src={logo} width="70" alt="Logo" />
         </Link>
@@ -29,6 +36,7 @@ export const Header = () => {
             <Navigation />
           </Suspense>
         )}
+        <button onClick={toggleTheme}>Change theme</button>
         {isAuth ? (
           <Suspense>
             <SignOutButton />

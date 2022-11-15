@@ -20,6 +20,7 @@ import userReducer from "./slices/userSlice";
 import authReducer from "./slices/authSlice";
 import favReducer from "./slices/favouriteSlice";
 import historyReducer from "./slices/historySlice";
+import { LoggerMiddleware } from "./LoggerMiddleware";
 import { cardsApi } from "./cardsApi";
 
 const persistConfig = {
@@ -43,7 +44,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REGISTER, REHYDRATE, PAUSE, PERSIST, PURGE],
       },
-    }).concat(cardsApi.middleware),
+    }).concat(cardsApi.middleware, LoggerMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

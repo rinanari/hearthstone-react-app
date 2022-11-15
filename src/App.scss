@@ -23,7 +23,12 @@
   box-shadow: 0 4px 15px 0 rgba(136, 92, 197, 0.75);
 }
 .container {
+  background-color: antiquewhite;
   text-align: center;
+  &_dark {
+    background-color: rgb(65, 41, 11);
+    color: white;
+  }
 }
 .wrapper {
   display: flex;
