@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Spinner } from "../components/Spinner";
 import { useGetSingleCardQuery } from "../redux/cardsApi";
 
 export const SingleCardPage = () => {
@@ -13,6 +14,6 @@ export const SingleCardPage = () => {
       </div>
     </div>
   ) : (
-    <p>Nothing</p>
+    <Spinner />
   );
 };

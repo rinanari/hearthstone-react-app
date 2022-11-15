@@ -31,9 +31,9 @@ export const SignIn = () => {
     <div>
       <h1>Sign in</h1>
       <Form title="Sign in" handleClick={handleSignIn} />
-      <p>
+      <div>
         Not yet registered? <Link to={"/signup"}>Register</Link>
-      </p>
+      </div>
     </div>
   );
 };

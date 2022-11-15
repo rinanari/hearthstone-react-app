@@ -1,19 +1,23 @@
-import React from "react";
-import s from "../components/Card.module.scss";
-import { Card } from "../models/models";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addFavourite, removeFavourite } from "../redux/slices/favouriteSlice";
-import { useState } from "react";
+import { Card } from "../models/models";
+import { useAuth } from "../hooks/useAuth";
+
 import blankStar from "../assets/images/blank-star.png";
 import paintedStar from "../assets/images/painted-star.png";
-import { useAuth } from "../hooks/useAuth";
-import { Link } from "react-router-dom";
-type Props = { key: string; card: Card };
+import PropTypes from "prop-types";
+import s from "../components/Card.module.scss";
+
+type Props = { card: Card };
 
 export const CardItem = (props: Props) => {
   const dispatch = useAppDispatch();
   const { isAuth } = useAuth();
   const { favourites } = useAppSelector((state) => state.favourites);
+
   const [isFav, setIsFav] = useState(favourites.includes(props.card));
 
   const addToFavourite = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,4 +53,8 @@ export const CardItem = (props: Props) => {
         ))}
     </div>
   );
+};
+
+CardItem.propTypes = {
+  card: PropTypes.object,
 };

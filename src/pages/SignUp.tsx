@@ -30,9 +30,9 @@ export const SignUp = () => {
     <div>
       <h1>Sign up</h1>
       <Form title="Sign up" handleClick={handleSignUp} />
-      <p>
+      <div>
         Already have an account? <Link to={"/signin"}> Sign in </Link>
-      </p>
+      </div>
     </div>
   );
 };

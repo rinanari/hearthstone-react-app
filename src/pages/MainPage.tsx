@@ -1,27 +1,28 @@
-import { CardsInfo } from "../components/CardsInfo";
-import { useEffect, useState } from "react";
-import { useDebounce } from "../hooks/debounce";
-import { useSearchCardsQuery } from "../redux/cardsApi";
-import { useAppDispatch } from "../redux/hooks";
+import { useEffect, useState, Suspense, lazy } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import { useAuth } from "../hooks/useAuth";
-import s from "../pages/MainPage.module.scss";
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { useAppDispatch } from "../redux/hooks";
+import { useSearchCardsQuery } from "../redux/cardsApi";
 import { addToHistory } from "../redux/slices/historySlice";
+import { useDebounce } from "../hooks/debounce";
+import { useAuth } from "../hooks/useAuth";
+
+import s from "../pages/MainPage.module.scss";
+
+const CardsInfo = lazy(() =>
+  import("../components/CardsInfo").then(({ CardsInfo }) => ({
+    default: CardsInfo,
+  }))
+);
 
 export const MainPage = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [dropdown, setDropdown] = useState(false);
+
   const dispatch = useAppDispatch();
   const debounced = useDebounce(search);
   const isAuth = useAuth();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const { isError, isLoading, data } = useSearchCardsQuery(debounced);
@@ -38,11 +39,10 @@ export const MainPage = () => {
   }, [debounced, data]);
 
   useEffect(() => {
-    if (search.length > 0) {
+    if (search.length > 3) {
       if (isAuth) {
         dispatch(addToHistory(debounced));
       }
-
       navigate(`?search=${debounced}`);
     }
   }, [debounced]);
@@ -59,19 +59,21 @@ export const MainPage = () => {
         </div>
         <div>
           <div className="wrapper">
-            <input
-              className={s.input}
-              type="search"
-              name="search"
-              placeholder="search"
-              value={search}
-              onChange={onInputChange}
-            />
+            <form>
+              <input
+                className={s.input}
+                type="search"
+                name="search"
+                placeholder="search"
+                value={search}
+                onChange={onInputChange}
+                autoComplete="off"
+              />
+            </form>
           </div>
 
           {dropdown && (
             <ul className={s.dropdown}>
-              {isLoading && <p>Loading...</p>}
               {data?.map((card, index) => (
                 <li
                   className={s.dropdown__list}
@@ -83,7 +85,9 @@ export const MainPage = () => {
               ))}
             </ul>
           )}
-          <CardsInfo data={data} />
+          <Suspense>
+            <CardsInfo data={data} />
+          </Suspense>
         </div>
       </main>
     </div>

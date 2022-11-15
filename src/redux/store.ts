@@ -17,10 +17,10 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "./slices/userSlice";
-import { cardsApi } from "./cardsApi";
 import authReducer from "./slices/authSlice";
 import favReducer from "./slices/favouriteSlice";
 import historyReducer from "./slices/historySlice";
+import { cardsApi } from "./cardsApi";
 
 const persistConfig = {
   key: "root",
