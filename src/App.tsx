@@ -14,7 +14,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage />}>
+          <Route path="/" index element={<MainPage />} />
+        </Route>
         <Route path="/:cardId" element={<SingleCardPage />}></Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />

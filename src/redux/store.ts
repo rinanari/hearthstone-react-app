@@ -19,8 +19,8 @@ import storage from "redux-persist/lib/storage";
 import userReducer from "./slices/userSlice";
 import { cardsApi } from "./cardsApi";
 import authReducer from "./slices/authSlice";
-import searchReducer from "./slices/searchSlice";
 import favReducer from "./slices/favouriteSlice";
+import historyReducer from "./slices/historySlice";
 
 const persistConfig = {
   key: "root",
@@ -30,8 +30,8 @@ const reducers = combineReducers({
   [cardsApi.reducerPath]: cardsApi.reducer,
   user: userReducer,
   auth: authReducer,
-  search: searchReducer,
   favourites: favReducer,
+  history: historyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
