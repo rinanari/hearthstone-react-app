@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { Spinner } from "../components/Spinner";
-import { useGetSingleCardQuery } from "../redux/cardsApi";
+import { Spinner } from "../../components/Spinner/Spinner";
+import { useGetSingleCardQuery } from "../../redux/cardsApi";
 
 export const SingleCardPage = () => {
   const { cardId } = useParams();

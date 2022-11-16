@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Form } from "../components/Form";
-import { setUser } from "../redux/slices/userSlice";
-import { setAuth } from "../redux/slices/authSlice";
+import { Form } from "../../components/Form/Form";
+import { setUser } from "../../redux/slices/userSlice";
+import { setAuth } from "../../redux/slices/authSlice";
 
 export const SignIn = () => {
   const dispatch = useDispatch();

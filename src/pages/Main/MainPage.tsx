@@ -1,17 +1,17 @@
 import { useEffect, useContext, useState, Suspense, lazy } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAppDispatch } from "../redux/hooks";
-import { useSearchCardsQuery } from "../redux/cardsApi";
-import { addToHistory } from "../redux/slices/historySlice";
-import { useDebounce } from "../hooks/debounce";
-import { useAuth } from "../hooks/useAuth";
-import { ThemeContext } from "../ThemeProvider";
-import { Spinner } from "../components/Spinner";
+import { useAppDispatch } from "../../redux/hooks";
+import { useSearchCardsQuery } from "../../redux/cardsApi";
+import { addToHistory } from "../../redux/slices/historySlice";
+import { useDebounce } from "../../hooks/debounce";
+import { useAuth } from "../../hooks/useAuth";
+import { ThemeContext } from "../../services/ThemeProvider";
+import { Spinner } from "../../components/Spinner/Spinner";
 
-import s from "../pages/MainPage.module.scss";
+import s from "../Main/MainPage.module.scss";
 
 const CardsInfo = lazy(() =>
-  import("../components/CardsInfo").then(({ CardsInfo }) => ({
+  import("../../components/CardsInfo/CardsInfo").then(({ CardsInfo }) => ({
     default: CardsInfo,
   }))
 );
@@ -26,7 +26,7 @@ export const MainPage = () => {
   const isAuth = useAuth();
   const navigate = useNavigate();
 
-  const { isError, isLoading, data } = useSearchCardsQuery(debounced);
+  const { data } = useSearchCardsQuery(debounced);
 
   function handleDropdownClick(cardName: string) {
     setSearch(cardName);

@@ -1,28 +1,28 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { MainPage } from "./pages/MainPage";
-import { Header } from "./components/Header";
-import { SignIn } from "./pages/SignIn";
-import { SignUp } from "./pages/SignUp";
-import { ProtectedRoutes } from "./ProtectedRoutes";
-import { Spinner } from "./components/Spinner";
+import { MainPage } from "./pages/Main/MainPage";
+import { Header } from "./components/Header/Header";
+import { SignIn } from "./pages/SignIn/SignIn";
+import { SignUp } from "./pages/SignUp/SignUp";
+import { ProtectedRoutes } from "./services/ProtectedRoutes";
+import { Spinner } from "./components/Spinner/Spinner";
 import { ErrorBoundary } from "react-error-boundary";
 import "./App.scss";
-import { ErrorPage } from "./pages/ErrorPage";
+import { ErrorPage } from "./pages/Error/ErrorPage";
 
 const FavouritesPage = lazy(() =>
-  import("./pages/FavouritesPage").then(({ FavouritesPage }) => ({
+  import("./pages/Favourites/FavouritesPage").then(({ FavouritesPage }) => ({
     default: FavouritesPage,
   }))
 );
 const HistoryPage = lazy(() =>
-  import("./pages/HistoryPage").then(({ HistoryPage }) => ({
+  import("./pages/History/HistoryPage").then(({ HistoryPage }) => ({
     default: HistoryPage,
   }))
 );
 
 const SingleCardPage = lazy(() =>
-  import("./pages/SingleCardPage").then(({ SingleCardPage }) => ({
+  import("./pages/SingleCard/SingleCardPage").then(({ SingleCardPage }) => ({
     default: SingleCardPage,
   }))
 );

@@ -1,18 +1,18 @@
 import { useContext, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
-import { ThemeContext } from "../ThemeProvider";
+import { useAuth } from "../../hooks/useAuth";
+import { ThemeContext } from "../../services/ThemeProvider";
 
-import logo from "../assets/images/logo.png";
-import s from "../components/Header.module.scss";
+import logo from "../../assets/images/logo.png";
+import s from "../Header/Header.module.scss";
 
 const Navigation = lazy(() =>
-  import("../components/Navigation").then(({ Navigation }) => ({
+  import("../Navigation/Navigation").then(({ Navigation }) => ({
     default: Navigation,
   }))
 );
 const SignOutButton = lazy(() =>
-  import("./SignOutButton").then(({ SignOutButton }) => ({
+  import("../SignOut/SignOutButton").then(({ SignOutButton }) => ({
     default: SignOutButton,
   }))
 );

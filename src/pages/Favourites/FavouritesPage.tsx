@@ -1,5 +1,5 @@
-import { CardsInfo } from "../components/CardsInfo";
-import { useAppSelector } from "../redux/hooks";
+import { CardsInfo } from "../../components/CardsInfo/CardsInfo";
+import { useAppSelector } from "../../redux/hooks";
 
 export const FavouritesPage = () => {
   const { favourites } = useAppSelector((state) => state.favourites);

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Form } from "../components/Form";
-import { setAuth } from "../redux/slices/authSlice";
-import { setUser } from "../redux/slices/userSlice";
+import { Form } from "../../components/Form/Form";
+import { setAuth } from "../../redux/slices/authSlice";
+import { setUser } from "../../redux/slices/userSlice";
 
 export const SignUp = () => {
   const dispatch = useAppDispatch();

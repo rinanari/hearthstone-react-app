@@ -1,6 +1,6 @@
-import { CardItem } from "./CardItem";
-import { Card } from "../models/models";
-import s from "../components/CardsInfo.module.scss";
+import { CardItem } from "../Card/CardItem";
+import { Card } from "../../models/models";
+import s from "../CardsInfo/CardsInfo.module.scss";
 interface Props {
   data: Card[] | undefined;
 }
