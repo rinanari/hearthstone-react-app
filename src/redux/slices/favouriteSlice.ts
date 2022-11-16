@@ -3,11 +3,9 @@ import { Card } from "../../models/models";
 
 interface FavState {
   favourites: Card[];
-  isFavourite: boolean;
 }
 const initialState: FavState = {
   favourites: [],
-  isFavourite: false,
 };
 
 const favSlice = createSlice({

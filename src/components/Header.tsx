@@ -1,26 +1,46 @@
+import { useContext, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { ThemeContext } from "../ThemeProvider";
+
 import logo from "../assets/images/logo.png";
 import s from "../components/Header.module.scss";
-import { SignOutButton } from "./SignOutButton";
+
+const Navigation = lazy(() =>
+  import("../components/Navigation").then(({ Navigation }) => ({
+    default: Navigation,
+  }))
+);
+const SignOutButton = lazy(() =>
+  import("./SignOutButton").then(({ SignOutButton }) => ({
+    default: SignOutButton,
+  }))
+);
 
 export const Header = () => {
   const { isAuth } = useAuth();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div>
-      <div className={s.header_container}>
+      <div
+        className={
+          theme === "Light" ? s.header_container : s.header_container_dark
+        }
+      >
         <Link to="/" className={s.logo}>
           <img src={logo} width="70" alt="Logo" />
         </Link>
         {isAuth && (
-          <nav>
-            <Link to="/favourites">Favourite cards</Link>
-            <Link to="/history">Search history</Link>
-          </nav>
+          <Suspense>
+            <Navigation />
+          </Suspense>
         )}
+        <button onClick={toggleTheme}>Change theme</button>
         {isAuth ? (
-          <SignOutButton />
+          <Suspense>
+            <SignOutButton />
+          </Suspense>
         ) : (
           <div className={s.sign_buttons}>
             <div className="button">

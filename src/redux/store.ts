@@ -17,10 +17,11 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "./slices/userSlice";
-import { cardsApi } from "./cardsApi";
 import authReducer from "./slices/authSlice";
-import searchReducer from "./slices/searchSlice";
 import favReducer from "./slices/favouriteSlice";
+import historyReducer from "./slices/historySlice";
+import { LoggerMiddleware } from "./LoggerMiddleware";
+import { cardsApi } from "./cardsApi";
 
 const persistConfig = {
   key: "root",
@@ -30,8 +31,8 @@ const reducers = combineReducers({
   [cardsApi.reducerPath]: cardsApi.reducer,
   user: userReducer,
   auth: authReducer,
-  search: searchReducer,
   favourites: favReducer,
+  history: historyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -43,7 +44,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REGISTER, REHYDRATE, PAUSE, PERSIST, PURGE],
       },
-    }).concat(cardsApi.middleware),
+    }).concat(cardsApi.middleware, LoggerMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
