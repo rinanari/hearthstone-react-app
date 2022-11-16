@@ -9,6 +9,7 @@ import { ThemeContext } from "../../services/ThemeProvider";
 import { Spinner } from "../../components/Spinner/Spinner";
 
 import s from "../Main/MainPage.module.scss";
+import authSlice from "../../redux/slices/authSlice";
 
 const CardsInfo = lazy(() =>
   import("../../components/CardsInfo/CardsInfo").then(({ CardsInfo }) => ({
@@ -26,7 +27,7 @@ export const MainPage = () => {
   const isAuth = useAuth();
   const navigate = useNavigate();
 
-  const { data } = useSearchCardsQuery(debounced);
+  const { data, isLoading, isError } = useSearchCardsQuery(debounced);
 
   function handleDropdownClick(cardName: string) {
     setSearch(cardName);
@@ -77,20 +78,27 @@ export const MainPage = () => {
 
             {dropdown && (
               <ul className={s.dropdown}>
-                {data?.map((card, index) => (
-                  <li
-                    className={s.dropdown__list}
-                    key={index}
-                    onClick={() => handleDropdownClick(card.name)}
-                  >
-                    {card.name}
-                  </li>
-                ))}
+                {!isError
+                  ? data?.map((card, index) => (
+                      <li
+                        className={s.dropdown__list}
+                        key={index}
+                        onClick={() => handleDropdownClick(card.name)}
+                      >
+                        {card.name}
+                      </li>
+                    ))
+                  : !dropdown}
               </ul>
             )}
-            <Suspense fallback={<Spinner />}>
-              <CardsInfo data={data} />
-            </Suspense>
+            {isLoading && <Spinner />}
+            {isError ? (
+              <p>There's no such card!</p>
+            ) : (
+              <Suspense fallback={<Spinner />}>
+                <CardsInfo data={data} />
+              </Suspense>
+            )}
           </div>
         </div>
       </main>

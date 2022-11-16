@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
@@ -7,6 +8,7 @@ import { setAuth } from "../../redux/slices/authSlice";
 import { setUser } from "../../redux/slices/userSlice";
 
 export const SignUp = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -23,13 +25,22 @@ export const SignUp = () => {
         dispatch(setAuth());
         navigate("/");
       })
-      .catch(console.error);
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
 
   return (
     <div>
       <h1>Sign up</h1>
       <Form title="Sign up" handleClick={handleSignUp} />
+      {errorMessage === "Firebase: Error (auth/email-already-in-use)." && (
+        <p>This email is already registered</p>
+      )}
+      {errorMessage ===
+        "Firebase: Password should be at least 6 characters (auth/weak-password)." && (
+        <p>Your password should be at least 6 characters long</p>
+      )}
       <div>
         Already have an account? <Link to={"/signin"}> Sign in </Link>
       </div>

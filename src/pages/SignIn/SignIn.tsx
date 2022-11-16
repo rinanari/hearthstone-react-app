@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import { setAuth } from "../../redux/slices/authSlice";
 export const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [error, setError] = useState(false);
   const handleSignIn = (email: string, password: string) => {
     const auth = getAuth();
 
@@ -24,13 +25,14 @@ export const SignIn = () => {
         dispatch(setAuth());
         navigate("/");
       })
-      .catch(console.error);
+      .catch((error) => setError(true));
   };
 
   return (
     <div>
       <h1>Sign in</h1>
       <Form title="Sign in" handleClick={handleSignIn} />
+      {error && <p>Wrong login or password</p>}
       <div>
         Not yet registered? <Link to={"/signup"}>Register</Link>
       </div>
