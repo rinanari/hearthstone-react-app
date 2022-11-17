@@ -28,7 +28,7 @@ export const cardsApi = createApi({
         return removeDuplicates(filteredResp);
       },
     }),
-    getSingleCard: build.query<SingleCard[], string | undefined>({
+    getSingleCard: build.query<Card[], string | undefined>({
       query: (id: string) => ({
         url: `cards/${id}`,
         method,
