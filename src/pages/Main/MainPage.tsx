@@ -73,7 +73,10 @@ export const MainPage = () => {
                   autoComplete="off"
                 />
                 {dropdown && (
-                  <ul className={s.dropdown}>
+                  <ul
+                    onMouseLeave={() => setDropdown(false)}
+                    className={s.dropdown}
+                  >
                     {!isError
                       ? data?.map((card, index) => (
                           <li
