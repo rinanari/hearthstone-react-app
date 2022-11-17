@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { FavouriteButton } from "../../components/FavouriteButton/FavouriteButton";
+
 import { Card } from "../../models/models";
 
 import s from "../SingleCard/SingleCard.module.scss";
@@ -26,9 +26,6 @@ export const SingleCard = ({ data }: Props) => {
             <li key={index}>{`${key}: ${card[key as keyof Card]}`}</li>
           ))}
       </div>
-      <FavouriteButton card={card} fav={fav} setIsFav={setIsFav}>
-        Add to favourite
-      </FavouriteButton>
     </div>
   );
 };
