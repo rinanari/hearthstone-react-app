@@ -1,5 +1,6 @@
 .card {
   transform-style: preserve-3d;
+
   &_img {
     height: 300px;
     width: auto;
@@ -16,25 +17,5 @@
         transform: translateY(-20px);
       }
     }
-  }
-}
-.star {
-  width: 40px;
-  height: 40px;
-}
-.buttons {
-  display: flex;
-  justify-content: center;
-}
-.favourite_button {
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 230px;
-  height: 60px;
-  padding: 10px;
-  img {
-    margin-right: 20px;
   }
 }

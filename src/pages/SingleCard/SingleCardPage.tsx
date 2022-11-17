@@ -13,7 +13,7 @@ export const SingleCardPage = () => {
 
   return data ? (
     <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
-      <div className={s.single_card}>
+      <div className={s.single_card_wrapper}>
         <SingleCard data={data} />
       </div>
     </div>

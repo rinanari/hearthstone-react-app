@@ -51,7 +51,9 @@ export const MainPage = () => {
   return (
     <div>
       <main className="main-page">
-        <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
+        <div
+          className={theme === "Light" ? "wrapper" : " wrapper wrapper_dark"}
+        >
           <div>
             <h1>Welcome to our Hearthstone community</h1>
             <p>
@@ -64,7 +66,7 @@ export const MainPage = () => {
             <div className={`container ${s.search_container}`}>
               <form>
                 <input
-                  className={s.input}
+                  className={theme === "Light" ? "input" : "input input_dark"}
                   type="text"
                   name="search"
                   placeholder="search"
@@ -93,7 +95,6 @@ export const MainPage = () => {
               </form>
             </div>
 
-            {/* {isLoading && <Spinner />} */}
             {isError ? (
               <p>There's no such card!</p>
             ) : (

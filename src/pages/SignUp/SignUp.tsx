@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
@@ -6,11 +6,15 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Form } from "../../components/Form/Form";
 import { setAuth } from "../../redux/slices/authSlice";
 import { setUser } from "../../redux/slices/userSlice";
+import { ThemeContext } from "../../services/ThemeProvider";
+
+import s from "../SignUp/SignUp.module.scss";
 
 export const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
 
   const handleSignUp = (email: string, password: string) => {
     const auth = getAuth();
@@ -31,7 +35,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className={theme === "Light" ? "wrapper" : "wrapper wrapper_dark"}>
       <h1>Sign up</h1>
       <Form title="Sign up" handleClick={handleSignUp} />
       {errorMessage === "Firebase: Error (auth/email-already-in-use)." && (
@@ -42,7 +46,11 @@ export const SignUp = () => {
         <p>Your password should be at least 6 characters long</p>
       )}
       <div>
-        Already have an account? <Link to={"/signin"}> Sign in </Link>
+        Already have an account?{" "}
+        <Link to={"/signin"} className={s.link}>
+          {" "}
+          Sign in{" "}
+        </Link>
       </div>
     </div>
   );

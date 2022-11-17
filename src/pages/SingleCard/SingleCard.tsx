@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 
 import { Card } from "../../models/models";
 
 import s from "../SingleCard/SingleCard.module.scss";
+import { FavouriteButton } from "../../components/FavouriteButton/FavouriteButton";
 
 type Props = {
   data: Card[];
@@ -11,21 +12,29 @@ type Props = {
 export const SingleCard = ({ data }: Props) => {
   const card = data[0];
   const keysArray = Object.keys(card);
-  const { favourites } = useAppSelector((state) => state.favourites);
-  const [fav, setIsFav] = useState(favourites.includes(card));
 
   return (
     <div className={s.single_card}>
       <div>
         <img src={card.img} />
       </div>
-      <div>
+      <ul className={s.list}>
         {keysArray
-          .filter((key) => key !== "img" && key !== "imgGold")
+          .filter(
+            (key) =>
+              key !== "img" &&
+              key !== "imgGold" &&
+              key !== "dbfId" &&
+              key !== "cardId" &&
+              key !== "mechanics"
+          )
           .map((key, index) => (
             <li key={index}>{`${key}: ${card[key as keyof Card]}`}</li>
           ))}
-      </div>
+        <div className={s.button_container}>
+          <FavouriteButton card={card} />
+        </div>
+      </ul>
     </div>
   );
 };

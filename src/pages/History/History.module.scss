@@ -3,6 +3,9 @@ li {
 }
 .history_link {
   text-decoration: none;
+  &_dark {
+    color: #fcd144;
+  }
 }
 .history_container {
   text-align: left;

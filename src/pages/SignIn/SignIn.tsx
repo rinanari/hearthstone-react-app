@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -6,8 +6,12 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from "../../components/Form/Form";
 import { setUser } from "../../redux/slices/userSlice";
 import { setAuth } from "../../redux/slices/authSlice";
+import { ThemeContext } from "../../services/ThemeProvider";
+
+import s from "../SignIn/SignIn.module.scss";
 
 export const SignIn = () => {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState(false);
@@ -29,12 +33,15 @@ export const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className={theme === "Light" ? "wrapper" : "wrapper wrapper_dark"}>
       <h1>Sign in</h1>
       <Form title="Sign in" handleClick={handleSignIn} />
       {error && <p>Wrong login or password</p>}
       <div>
-        Not yet registered? <Link to={"/signup"}>Register</Link>
+        Not yet registered?
+        <Link to={"/signup"} className={s.link}>
+          Register
+        </Link>
       </div>
     </div>
   );
