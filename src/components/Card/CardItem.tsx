@@ -18,22 +18,27 @@ export const CardItem = (props: Props) => {
     <div className={s.card}>
       <Link to={`/${props.card.cardId}`}>
         <img className={s.card_img} src={props.card.img} alt="Карточка" />
-        <h4>{props.card.name}</h4>
       </Link>
-      <p>{props.card.type}</p>
-      <p>{props.card.text}</p>
-      {isAuth &&
-        (isFav ? (
-          <button onClick={removeFromFavourite}>
-            <img src={paintedStar} alt="" className={s.star} />
-            Remove from favourite
-          </button>
-        ) : (
-          <button onClick={addToFavourite}>
-            <img src={blankStar} alt="" className={s.star} />
-            Add to favourite
-          </button>
-        ))}
+      <div className={s.buttons}>
+        {isAuth &&
+          (isFav ? (
+            <button
+              className={`button ${s.favourite_button}`}
+              onClick={removeFromFavourite}
+            >
+              <img src={paintedStar} alt="" className={s.star} />
+              Remove from favourite
+            </button>
+          ) : (
+            <button
+              className={`button ${s.favourite_button}`}
+              onClick={addToFavourite}
+            >
+              <img src={blankStar} alt="" className={s.star} />
+              Add to favourite
+            </button>
+          ))}
+      </div>
     </div>
   );
 };

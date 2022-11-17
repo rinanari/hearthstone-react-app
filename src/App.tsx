@@ -30,36 +30,39 @@ const SingleCardPage = lazy(() =>
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Suspense fallback={<Spinner />}>
-        <Routes>
-          <Route path="/" element={<MainPage />}>
-            <Route path="/" index element={<MainPage />} />
-          </Route>
+      <div className="wrapper">
+        <Header />
 
-          <Route path="/:cardId" element={<SingleCardPage />}></Route>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route element={<ProtectedRoutes />}>
-            <Route
-              path="/favourites"
-              element={
-                <ErrorBoundary fallback={<ErrorPage />}>
-                  <FavouritesPage />
-                </ErrorBoundary>
-              }
-            ></Route>
-            <Route
-              path="/history"
-              element={
-                <ErrorBoundary fallback={<ErrorPage />}>
-                  <HistoryPage />
-                </ErrorBoundary>
-              }
-            ></Route>
-          </Route>
-        </Routes>
-      </Suspense>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/" element={<MainPage />}>
+              <Route path="/" index element={<MainPage />} />
+            </Route>
+
+            <Route path="/:cardId" element={<SingleCardPage />}></Route>
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route
+                path="/favourites"
+                element={
+                  <ErrorBoundary fallback={<ErrorPage />}>
+                    <FavouritesPage />
+                  </ErrorBoundary>
+                }
+              ></Route>
+              <Route
+                path="/history"
+                element={
+                  <ErrorBoundary fallback={<ErrorPage />}>
+                    <HistoryPage />
+                  </ErrorBoundary>
+                }
+              ></Route>
+            </Route>
+          </Routes>
+        </Suspense>
+      </div>
     </div>
   );
 }

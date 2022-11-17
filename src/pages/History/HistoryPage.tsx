@@ -1,20 +1,31 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
+import { ThemeContext } from "../../services/ThemeProvider";
+import s from "../History/History.module.scss";
 
 export const HistoryPage = () => {
   const history = useAppSelector((state) => state.history.historyList);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <div>
-      <h1>Here you an find all the cards you searched for.</h1>
-      <p>You have not searched for anything yet.</p>
-      {history
-        .filter((name, index, arr) => arr.indexOf(name) === index)
-        .map((param) => (
-          <li key={param}>
-            <Link to={`/?search=${param}`}>{param}</Link>
-          </li>
-        ))}
+    <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
+      <h1>Here you can find links to all searches you've made</h1>
+      <div className={s.history_container}>
+        {history.length > 0 ? (
+          history
+            .filter((name, index, arr) => arr.indexOf(name) === index)
+            .map((param) => (
+              <li key={param}>
+                <Link to={`/?search=${param}`} className={s.history_link}>
+                  {param}
+                </Link>
+              </li>
+            ))
+        ) : (
+          <p>You have not searched for anything yet.</p>
+        )}
+      </div>
     </div>
   );
 };

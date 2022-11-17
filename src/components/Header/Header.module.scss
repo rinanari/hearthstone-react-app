@@ -1,27 +1,46 @@
-.header_container {
-  padding: 20px;
-  max-height: 100px;
-  background-color: bisque;
+.header {
+  background-image: url(../../assets/images/hearthstone-art.jpg);
+  background-position: 50%;
+}
+.decoration {
+  margin: 70px;
+  padding: 0 30px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   background-image: url(../../assets/images/wood.png);
   &_dark {
-    background-color: rgb(58, 36, 9);
+    margin: 70px;
+    padding: 0 30px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(../../assets/images/wood.png);
+  }
+}
+.header_container {
+  padding: 20px;
+  &_dark {
   }
 }
 .logo {
-  padding: 20px 0 0 20px;
+  // padding: 20px 0 0 20px;
   transform: rotate(-30deg);
 }
-.sign_buttons {
-  width: 300px;
+.buttons {
+  width: 500px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-
-.sign_in,
-.sign_up {
-  color: white;
-  text-decoration: none;
+.sign_buttons {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+.theme_button {
+  width: 150px;
+}
+.sign_buttons {
+  display: flex;
 }

@@ -9,7 +9,6 @@ import { ThemeContext } from "../../services/ThemeProvider";
 import { Spinner } from "../../components/Spinner/Spinner";
 
 import s from "../Main/MainPage.module.scss";
-import authSlice from "../../redux/slices/authSlice";
 
 const CardsInfo = lazy(() =>
   import("../../components/CardsInfo/CardsInfo").then(({ CardsInfo }) => ({
@@ -52,7 +51,7 @@ export const MainPage = () => {
   return (
     <div>
       <main className="main-page">
-        <div className={theme === "Light" ? "container" : "container_dark"}>
+        <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
           <div>
             <h1>Welcome to our Hearthstone community</h1>
             <p>
@@ -62,36 +61,36 @@ export const MainPage = () => {
           </div>
 
           <div>
-            <div className="wrapper">
+            <div className={`container ${s.search_container}`}>
               <form>
                 <input
                   className={s.input}
-                  type="search"
+                  type="text"
                   name="search"
                   placeholder="search"
                   value={search}
                   onChange={onInputChange}
                   autoComplete="off"
                 />
+                {dropdown && (
+                  <ul className={s.dropdown}>
+                    {!isError
+                      ? data?.map((card, index) => (
+                          <li
+                            className={s.dropdown__list}
+                            key={index}
+                            onClick={() => handleDropdownClick(card.name)}
+                          >
+                            {card.name}
+                          </li>
+                        ))
+                      : !dropdown}
+                  </ul>
+                )}
               </form>
             </div>
 
-            {dropdown && (
-              <ul className={s.dropdown}>
-                {!isError
-                  ? data?.map((card, index) => (
-                      <li
-                        className={s.dropdown__list}
-                        key={index}
-                        onClick={() => handleDropdownClick(card.name)}
-                      >
-                        {card.name}
-                      </li>
-                    ))
-                  : !dropdown}
-              </ul>
-            )}
-            {isLoading && <Spinner />}
+            {/* {isLoading && <Spinner />} */}
             {isError ? (
               <p>There's no such card!</p>
             ) : (

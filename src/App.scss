@@ -1,10 +1,27 @@
+.wrapper {
+  min-height: 80vh;
+  width: 100%;
+  background-image: url("./assets/images/background.jpg");
+  text-align: center;
+
+  &_dark {
+    min-height: 80vh;
+    width: 100%;
+    color: #fcd144;
+    background-image: url("./assets/images/homepage_star_bg.jpg");
+  }
+}
 .button {
-  width: 200px;
+  font-family: "Eczar";
+  line-height: normal;
+  color: #fcd144;
+  text-decoration: none;
+  width: 120px;
+  height: 40px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   margin: 18px;
-  height: 30px;
   text-align: center;
   border: none;
   background-size: 300% 100%;
@@ -22,15 +39,8 @@
   );
   box-shadow: 0 4px 15px 0 rgba(136, 92, 197, 0.75);
 }
+
 .container {
-  background-color: antiquewhite;
-  text-align: center;
-  &_dark {
-    background-color: rgb(65, 41, 11);
-    color: white;
-  }
-}
-.wrapper {
   display: flex;
   justify-content: center;
 }

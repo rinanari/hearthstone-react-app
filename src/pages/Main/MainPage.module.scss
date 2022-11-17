@@ -1,22 +1,39 @@
 .dropdown {
-  background-color: white;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
   position: absolute;
-  top: 330px;
-  left: 250px;
-  right: 0;
-  max-height: 150px;
-  max-width: 400px;
-  overflow-y: scroll;
+  left: 20px;
+  background-color: rgb(252, 238, 207);
+  max-height: 140px;
+  min-width: 380px;
+  overflow-y: clip;
+  border: 6px ridge #fcd144;
+  border-radius: 10px;
   &__list {
     list-style: none;
   }
   &__list:hover {
-    background-color: beige;
+    background-image: linear-gradient(
+      to right,
+      #5a70d4,
+      #834fb9,
+      #5a80d2,
+      #892ad8
+    );
     cursor: pointer;
+    color: #fcd144;
   }
 }
-.input {
+form {
   position: relative;
+}
+
+h1 {
+  margin: 0;
+  padding: 40px;
+}
+.input {
   margin: 20px;
   width: 400px;
   padding: 12px 24px;

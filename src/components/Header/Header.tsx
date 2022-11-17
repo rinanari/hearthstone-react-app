@@ -22,39 +22,48 @@ export const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div>
-      <div
-        className={
-          theme === "Light" ? s.header_container : s.header_container_dark
-        }
-      >
-        <Link to="/" className={s.logo}>
-          <img src={logo} width="70" alt="Logo" />
-        </Link>
-        {isAuth && (
-          <Suspense>
-            <Navigation />
-          </Suspense>
-        )}
-        <button onClick={toggleTheme}>Change theme</button>
-        {isAuth ? (
-          <Suspense>
-            <SignOutButton />
-          </Suspense>
-        ) : (
-          <div className={s.sign_buttons}>
-            <div className="button">
-              <Link to={"/signin"} className={s.sign_in}>
-                Sign in
-              </Link>
-            </div>
-            <div className="button">
-              <Link to={"/signup"} className={s.sign_up}>
-                Sign up
-              </Link>
+    <div className={s.header}>
+      <div className={s.header_container}>
+        <div className={theme === "Light" ? s.decoration : s.decoration_dark}>
+          <Link to="/" className={s.logo}>
+            <img src={logo} width="70" alt="Logo" />
+          </Link>
+          <div className={s.buttons}>
+            {isAuth && (
+              <Suspense>
+                <Navigation />
+              </Suspense>
+            )}
+          </div>
+          <div className={s.buttons}>
+            <button
+              onClick={toggleTheme}
+              className={`button ${s.theme_button}`}
+            >
+              Change theme
+            </button>
+            <div className={s.sign_buttons}>
+              {isAuth ? (
+                <Suspense>
+                  <SignOutButton />
+                </Suspense>
+              ) : (
+                <>
+                  <div className="button">
+                    <Link to={"/signin"} className="button">
+                      Sign in
+                    </Link>
+                  </div>
+                  <div className="button">
+                    <Link to={"/signup"} className="button">
+                      Sign up
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
