@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { useAppSelector } from "../../redux/hooks";
-
 import { Card } from "../../models/models";
-
+import PropTypes from "prop-types";
 import s from "../SingleCard/SingleCard.module.scss";
 import { FavouriteButton } from "../../components/FavouriteButton/FavouriteButton";
 
@@ -37,4 +34,8 @@ export const SingleCard = ({ data }: Props) => {
       </ul>
     </div>
   );
+};
+
+SingleCard.propTypes = {
+  card: PropTypes.object,
 };
