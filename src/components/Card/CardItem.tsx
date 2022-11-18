@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Card } from "../../models/models";
-
 import PropTypes from "prop-types";
-import s from "../Card/Card.module.scss";
+import { Card } from "../../models/models";
 import { FavouriteButton } from "../FavouriteButton/FavouriteButton";
+
+import s from "../Card/Card.module.scss";
 
 type Props = { card: Card };
 

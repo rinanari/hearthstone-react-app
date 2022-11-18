@@ -46,10 +46,9 @@ export const SignUp = () => {
         <p>Your password should be at least 6 characters long</p>
       )}
       <div>
-        Already have an account?{" "}
+        Already have an account?
         <Link to={"/signin"} className={s.link}>
-          {" "}
-          Sign in{" "}
+          Sign in
         </Link>
       </div>
     </div>

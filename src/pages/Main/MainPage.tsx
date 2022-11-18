@@ -46,7 +46,7 @@ export const MainPage = () => {
       }
       navigate(`?search=${debounced}`);
     }
-  }, [debounced]);
+  }, [debounced, isAuth]);
 
   return (
     <div>
@@ -96,7 +96,7 @@ export const MainPage = () => {
                 </form>
               </div>
 
-              {isError ? (
+              {search && isError ? (
                 <p>There's no such card!</p>
               ) : (
                 <Suspense fallback={<Spinner />}>

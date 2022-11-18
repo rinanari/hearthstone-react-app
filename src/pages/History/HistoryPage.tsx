@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
 import { ThemeContext } from "../../services/ThemeProvider";
+
 import s from "../History/History.module.scss";
 
 export const HistoryPage = () => {

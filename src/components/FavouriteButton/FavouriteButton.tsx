@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Card } from "../../models/models";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { toggleFavourite } from "../../redux/slices/favouriteSlice";
+
 import blankStar from "../../assets/images/blank-star.png";
 import paintedStar from "../../assets/images/painted-star.png";
 import s from "../FavouriteButton/FavouriteButton.module.scss";
