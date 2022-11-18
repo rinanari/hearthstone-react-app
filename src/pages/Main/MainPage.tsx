@@ -40,13 +40,13 @@ export const MainPage = () => {
   }, [debounced, data]);
 
   useEffect(() => {
-    if (search.length >= 3) {
+    if (search.length > 3) {
       if (isAuth) {
         dispatch(addToHistory(debounced));
       }
       navigate(`?search=${debounced}`);
     }
-  }, [debounced, isAuth]);
+  }, [debounced]);
 
   return (
     <div>

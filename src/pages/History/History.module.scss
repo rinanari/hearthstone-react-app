@@ -4,6 +4,10 @@
 }
 .history_link {
   text-decoration: none;
+  color: rgb(73, 18, 18);
+  &:hover {
+    color: #892ad8;
+  }
   &_dark {
     color: #fcd144;
   }
