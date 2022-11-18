@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# Hearthstone card search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+---
 
-## Available Scripts
+![logo](src/assets/images/logo.png)
 
-In the project directory, you can run:
+## Требования к функциональности:
 
-### `npm start`
+### 1 уровень:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### React
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Функциональные компоненты c хуками в приоритете над классовыми.
+- Есть четкое разделение на умные и глупые компоненты.
+- Есть рендеринг списков [CardsInfo](./src/components/CardsInfo/CardsInfo.tsx), [MainPage](./src/pages/Main/MainPage.tsx), [History](./src/pages/History/HistoryPage.tsx)
+- Реализована хотя бы одна форма [Form](./src//components/Form/Form.tsx)
+- Есть применение Контекст API [ThemeProvider](./src/services/ThemeProvider.tsx)
+- Есть применение предохранителя - библиотека react-error-boundary + [ErrorPage](.src/../src/pages/Error/ErrorPage.tsx)
+- Есть хотя бы один кастомный хук [useAuth](.src/../src/hooks/useAuth.ts), [useDebounce](./src/hooks/debounce.ts)
+- Хотя бы несколько компонентов используют PropTypes [CardItem](.src/../src/components/Card/CardItem.tsx) [SingleCard](./src/pages/SingleCard/SingleCardPage.tsx)
+- Поиск не должен триггерить много запросов к серверу [MainPage](./src/pages/Main/MainPage.tsx)
+- Есть применение lazy + Suspense [App](.src/../src/App.tsx), [MainPage](./src/pages/Main/MainPage.tsx), [Header](.src/../src/components/Header/Header.tsx)
 
-### `npm test`
+#### Redux
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Используем Modern Redux with Redux Toolkit [Store](src./../src/redux/store.ts)
+- Используем слайсы [authSlice](./src/redux/slices/authSlice.ts), [favouriteSlice](./src/redux/slices/favouriteSlice.ts), [historySlice](./src/redux/slices/historySlice.ts),[userSlice](./src/redux/slices/userSlice.ts)
+- Есть хотя бы одна кастомная мидлвара [Logger](./src/redux/LoggerMiddleware.ts)
+- Используется RTK Query [cardsApi](./src/redux/cardsApi.ts)
+- Используется Transforming Responses [cardsApi](./src/redux/cardsApi.ts)
 
-### `npm run build`
+### 2 уровень:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Typescript
