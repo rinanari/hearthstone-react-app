@@ -9,6 +9,7 @@ import { Spinner } from "./components/Spinner/Spinner";
 import { ErrorBoundary } from "react-error-boundary";
 import "./App.scss";
 import { ErrorPage } from "./pages/Error/ErrorPage";
+import { Footer } from "./components/Footer/Footer";
 
 const FavouritesPage = lazy(() =>
   import("./pages/Favourites/FavouritesPage").then(({ FavouritesPage }) => ({
@@ -30,38 +31,40 @@ const SingleCardPage = lazy(() =>
 function App() {
   return (
     <div className="App">
+      <Header />
       <div className="wrapper">
-        <Header />
+        <div className="content">
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              <Route path="/" element={<MainPage />}>
+                <Route path="/" index element={<MainPage />} />
+              </Route>
 
-        <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route path="/" element={<MainPage />}>
-              <Route path="/" index element={<MainPage />} />
-            </Route>
-
-            <Route path="/:cardId" element={<SingleCardPage />}></Route>
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route element={<ProtectedRoutes />}>
-              <Route
-                path="/favourites"
-                element={
-                  <ErrorBoundary fallback={<ErrorPage />}>
-                    <FavouritesPage />
-                  </ErrorBoundary>
-                }
-              ></Route>
-              <Route
-                path="/history"
-                element={
-                  <ErrorBoundary fallback={<ErrorPage />}>
-                    <HistoryPage />
-                  </ErrorBoundary>
-                }
-              ></Route>
-            </Route>
-          </Routes>
-        </Suspense>
+              <Route path="/:cardId" element={<SingleCardPage />}></Route>
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  path="/favourites"
+                  element={
+                    <ErrorBoundary fallback={<ErrorPage />}>
+                      <FavouritesPage />
+                    </ErrorBoundary>
+                  }
+                ></Route>
+                <Route
+                  path="/history"
+                  element={
+                    <ErrorBoundary fallback={<ErrorPage />}>
+                      <HistoryPage />
+                    </ErrorBoundary>
+                  }
+                ></Route>
+              </Route>
+            </Routes>
+          </Suspense>
+        </div>
+        <Footer />
       </div>
     </div>
   );

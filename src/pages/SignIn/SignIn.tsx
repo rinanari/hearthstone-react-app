@@ -33,13 +33,17 @@ export const SignIn = () => {
   };
 
   return (
-    <div className={theme === "Light" ? "wrapper" : "wrapper wrapper_dark"}>
+    <div className={theme === "Light" ? "content" : "content content_dark"}>
       <h1>Sign in</h1>
       <Form title="Sign in" handleClick={handleSignIn} />
       {error && <p>Wrong login or password</p>}
       <div>
         Not yet registered?
-        <Link to={"/signup"} className={s.link}>
+        <Link
+          to={"/signup"}
+          className={s.link}
+          style={{ textDecoration: "none" }}
+        >
           Register
         </Link>
       </div>

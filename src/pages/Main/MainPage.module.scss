@@ -4,7 +4,7 @@
   z-index: 2;
   position: absolute;
   left: 20px;
-  background-color: rgb(252, 238, 207);
+  background-color: rgb(177, 150, 92);
   max-height: 140px;
   min-width: 380px;
   overflow-y: clip;
@@ -27,6 +27,10 @@
 }
 form {
   position: relative;
+}
+.search_container {
+  display: flex;
+  justify-content: center;
 }
 
 h1 {

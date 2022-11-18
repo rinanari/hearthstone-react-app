@@ -1,4 +1,11 @@
 .link {
+  text-decoration: none;
   margin-left: 20px;
-  color: #fcd144;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 }

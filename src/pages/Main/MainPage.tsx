@@ -26,7 +26,7 @@ export const MainPage = () => {
   const isAuth = useAuth();
   const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useSearchCardsQuery(debounced);
+  const { data, isError } = useSearchCardsQuery(debounced);
 
   function handleDropdownClick(cardName: string) {
     setSearch(cardName);
@@ -40,7 +40,7 @@ export const MainPage = () => {
   }, [debounced, data]);
 
   useEffect(() => {
-    if (search.length > 3) {
+    if (search.length >= 3) {
       if (isAuth) {
         dispatch(addToHistory(debounced));
       }
@@ -52,7 +52,7 @@ export const MainPage = () => {
     <div>
       <main className="main-page">
         <div
-          className={theme === "Light" ? "wrapper" : " wrapper wrapper_dark"}
+          className={theme === "Light" ? "content" : " content content_dark"}
         >
           <div>
             <h1>Welcome to our Hearthstone community</h1>
@@ -62,46 +62,48 @@ export const MainPage = () => {
             </p>
           </div>
 
-          <div>
-            <div className={`container ${s.search_container}`}>
-              <form>
-                <input
-                  className={theme === "Light" ? "input" : "input input_dark"}
-                  type="text"
-                  name="search"
-                  placeholder="search"
-                  value={search}
-                  onChange={onInputChange}
-                  autoComplete="off"
-                />
-                {dropdown && (
-                  <ul
-                    onMouseLeave={() => setDropdown(false)}
-                    className={s.dropdown}
-                  >
-                    {!isError
-                      ? data?.map((card, index) => (
-                          <li
-                            className={s.dropdown__list}
-                            key={index}
-                            onClick={() => handleDropdownClick(card.name)}
-                          >
-                            {card.name}
-                          </li>
-                        ))
-                      : !dropdown}
-                  </ul>
-                )}
-              </form>
-            </div>
+          <div className="container">
+            <div>
+              <div className={`${s.search_container}`}>
+                <form>
+                  <input
+                    className={theme === "Light" ? "input" : "input input_dark"}
+                    type="text"
+                    name="search"
+                    placeholder="search"
+                    value={search}
+                    onChange={onInputChange}
+                    autoComplete="off"
+                  />
+                  {dropdown && (
+                    <ul
+                      onMouseLeave={() => setDropdown(false)}
+                      className={s.dropdown}
+                    >
+                      {!isError
+                        ? data?.map((card, index) => (
+                            <li
+                              className={s.dropdown__list}
+                              key={index}
+                              onClick={() => handleDropdownClick(card.name)}
+                            >
+                              {card.name}
+                            </li>
+                          ))
+                        : !dropdown}
+                    </ul>
+                  )}
+                </form>
+              </div>
 
-            {isError ? (
-              <p>There's no such card!</p>
-            ) : (
-              <Suspense fallback={<Spinner />}>
-                <CardsInfo data={data} />
-              </Suspense>
-            )}
+              {isError ? (
+                <p>There's no such card!</p>
+              ) : (
+                <Suspense fallback={<Spinner />}>
+                  <CardsInfo data={data} />
+                </Suspense>
+              )}
+            </div>
           </div>
         </div>
       </main>

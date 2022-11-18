@@ -12,8 +12,8 @@ export const SingleCardPage = () => {
   const { theme } = useContext(ThemeContext);
 
   return data ? (
-    <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
-      <div className={s.single_card_wrapper}>
+    <div className={theme === "Light" ? "content" : "content_dark"}>
+      <div className="container">
         <SingleCard data={data} />
       </div>
     </div>

@@ -6,14 +6,12 @@ interface Props {
 }
 export const CardsInfo = ({ data }: Props) => {
   return (
-    <>
-      <div className="container">
-        <div className={s.cards_container}>
-          {data?.map((card) => (
-            <CardItem key={card.cardId} card={card} />
-          ))}
-        </div>
+    <div className="container">
+      <div className={s.cards_container}>
+        {data?.map((card) => (
+          <CardItem key={card.cardId} card={card} />
+        ))}
       </div>
-    </>
+    </div>
   );
 };

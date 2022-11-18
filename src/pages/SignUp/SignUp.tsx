@@ -35,7 +35,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div className={theme === "Light" ? "wrapper" : "wrapper wrapper_dark"}>
+    <div className={theme === "Light" ? "content" : "content content_dark"}>
       <h1>Sign up</h1>
       <Form title="Sign up" handleClick={handleSignUp} />
       {errorMessage === "Firebase: Error (auth/email-already-in-use)." && (

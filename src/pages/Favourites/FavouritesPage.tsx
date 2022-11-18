@@ -8,15 +8,19 @@ export const FavouritesPage = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={theme === "Light" ? "wrapper" : "wrapper_dark"}>
-      <h1>Here you an find cards you marked as favourites</h1>
-      {favourites.length === 0 ? (
-        <p>Right now your favourites section is empty</p>
-      ) : (
-        <ul>
-          <CardsInfo data={favourites} />
-        </ul>
-      )}
+    <div className={theme === "Light" ? "content" : "content content_dark"}>
+      <div className="container">
+        <div>
+          <h1>Here you an find cards you marked as favourites</h1>
+          {favourites.length === 0 ? (
+            <p>Right now your favourites section is empty</p>
+          ) : (
+            <div>
+              <CardsInfo data={favourites} />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
