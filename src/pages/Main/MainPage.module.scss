@@ -1,0 +1,39 @@
+.dropdown {
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+  position: absolute;
+  left: 20px;
+  background-color: rgb(177, 150, 92);
+  max-height: 140px;
+  min-width: 380px;
+  overflow-y: clip;
+  border: 6px ridge #fcd144;
+  border-radius: 10px;
+  &__list {
+    list-style: none;
+  }
+  &__list:hover {
+    background-image: linear-gradient(
+      to right,
+      #5a70d4,
+      #834fb9,
+      #5a80d2,
+      #892ad8
+    );
+    cursor: pointer;
+    color: #fcd144;
+  }
+}
+form {
+  position: relative;
+}
+.search_container {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 40px;
+}

@@ -12,16 +12,21 @@ const favSlice = createSlice({
   name: "favourites",
   initialState,
   reducers: {
-    addFavourite(state, action: PayloadAction<Card>) {
-      state.favourites.push(action.payload);
-    },
-    removeFavourite(state, action: PayloadAction<Card>) {
-      state.favourites = state.favourites.filter(
-        (f) => f.cardId !== action.payload.cardId
+    toggleFavourite(state, action: PayloadAction<Card>) {
+      const card = state.favourites.find(
+        (f) => f.cardId === action.payload.cardId
       );
+
+      if (!card) {
+        state.favourites.push(action.payload);
+      } else {
+        state.favourites = state.favourites.filter(
+          (f) => f.cardId !== action.payload.cardId
+        );
+      }
     },
   },
 });
 
-export const { addFavourite, removeFavourite } = favSlice.actions;
+export const { toggleFavourite } = favSlice.actions;
 export default favSlice.reducer;

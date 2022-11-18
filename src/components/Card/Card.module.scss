@@ -1,0 +1,21 @@
+.card {
+  transform-style: preserve-3d;
+
+  &_img {
+    height: 300px;
+    width: auto;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+    pointer-events: all;
+    filter: drop-shadow(rgba(0, 0, 0, 0.6) 0px 3px 3px);
+    backface-visibility: hidden;
+    &:hover {
+      animation: jump 1s ease infinite;
+    }
+    @keyframes jump {
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+  }
+}

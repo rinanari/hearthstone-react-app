@@ -1,0 +1,19 @@
+.link {
+  list-style-type: none;
+  text-decoration: none;
+}
+.history_link {
+  text-decoration: none;
+  color: rgb(73, 18, 18);
+  &:hover {
+    color: #892ad8;
+  }
+  &_dark {
+    color: #fcd144;
+  }
+}
+.history_container {
+  text-align: left;
+  padding-left: 45%;
+  padding-bottom: 100px;
+}

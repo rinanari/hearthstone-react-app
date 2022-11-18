@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "./services/ThemeProvider";
 import persistStore from "redux-persist/es/persistStore";
 import App from "./App";
-import "./firebase";
+import "./services/firebase";
 import "./index.scss";
 
 const container = document.getElementById("root")!;

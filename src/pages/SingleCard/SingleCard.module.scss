@@ -1,0 +1,14 @@
+.single_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > div {
+    margin-right: 50px;
+  }
+}
+.button_container {
+  align-self: flex-end;
+}
+.list {
+  text-align: left;
+}

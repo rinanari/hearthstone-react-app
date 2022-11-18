@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { nextTick } from "process";
+import { removeDuplicates } from "../utils/utils";
 import { Card, SingleCard } from "../models/models";
 
 const options = {
@@ -24,10 +24,11 @@ export const cardsApi = createApi({
         headers,
       }),
       transformResponse(response: Card[]) {
-        return response.filter((card: Card) => card.img);
+        const filteredResp = response.filter((card: Card) => card.img);
+        return removeDuplicates(filteredResp);
       },
     }),
-    getSingleCard: build.query<SingleCard[], string | undefined>({
+    getSingleCard: build.query<Card[], string | undefined>({
       query: (id: string) => ({
         url: `cards/${id}`,
         method,
